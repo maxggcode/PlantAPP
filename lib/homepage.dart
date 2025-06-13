@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'sign_in.dart';
+import 'signup.dart';
 
 class homepage extends StatelessWidget{
   @override
@@ -18,28 +20,65 @@ class homepage extends StatelessWidget{
               ClipOval(
                 child: Image.network(
                   "https://buy-obs.line-scdn.net/0hcxGx3AVaPFd6AS_ayNJDAClVMDcFLydVEz8jLw1aYy8EbgNKLWUQbCB3IyArR35JPTgPOQ9eEmQsbhsJLRUYMT5kFTwEMgRIFAEPNQ1KAScrRAtdFgJydw",
-                  width: 100,
-                  height: 100,
+                  width: 200,
+                  height: 200,
                   fit: BoxFit.cover,
                 ),
               ), 
+              SizedBox(
+                height: 50,
+              ),
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   ElevatedButton(
                     onPressed: (){
-
+                      Navigator.pushReplacement(
+                        context, 
+                        MaterialPageRoute(builder: (context) => sign_in()),
+                      );
                     }, 
-                    child: Text("登入"),
+                    style: ElevatedButton.styleFrom (
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 30,
+                        vertical: 10,
+                      ),
+                      backgroundColor: Colors.white,
+                    ),
+                    child: Text(
+                      "登入",
+                      style:TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                    ),
                   ),
                   SizedBox(
-                    width: 20,
+                    width: 25,
                   ),
                   ElevatedButton(
                     onPressed: (){
-
+                      Navigator.pushReplacement(
+                        context, 
+                        MaterialPageRoute(builder: (context) => signup()),
+                      );
                     }, 
-                    child: Text("註冊"),
+                    style: ElevatedButton.styleFrom (
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 30,
+                        vertical: 10,
+                      ),
+                      backgroundColor: Colors.white,
+                    ),
+                    child: Text(
+                      "註冊",
+                      style:TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                    ),
                   ),
                 ],
               ),
