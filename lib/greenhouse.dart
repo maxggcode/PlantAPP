@@ -13,16 +13,47 @@ class Greenhousestate extends State<Greenhouse> {
       context: context,
       builder: (context) {
         return Container(
-          height: 500,
+          height: 1000,
           color: Colors.white,
           child: Center(
             child: Column(
-              mainAxisSize: MainAxisSize.min,
+              
               children: [
+                SizedBox(
+                  height: 50,
+                ),
                 SizedBox(
                   width: 300,
                   child: Text(
                     "植物品種",
+                    style: TextStyle(
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                SizedBox(
+                  width: 300,
+                  height: 40,
+                  child: TextField(
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.blue,
+                        ),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                  ),
+                ),
+
+
+                SizedBox(
+                  width: 300,
+                  child: Text(
+                    "暱稱",
                     style: TextStyle(
                       fontSize: 20,
                     ),
