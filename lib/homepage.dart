@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'sign_in.dart';
 import 'signup.dart';
+import 'tools.dart';
 
 class homepage extends StatelessWidget{
   @override
@@ -31,54 +32,26 @@ class homepage extends StatelessWidget{
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  ElevatedButton(
-                    onPressed: (){
+                  homepage_button_model(
+                    text: "登入",
+                    on_tap: (){
                       Navigator.pushReplacement(
                         context, 
                         MaterialPageRoute(builder: (context) => sign_in()),
                       );
                     }, 
-                    style: ElevatedButton.styleFrom (
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 30,
-                        vertical: 10,
-                      ),
-                      backgroundColor: Colors.white,
-                    ),
-                    child: Text(
-                      "登入",
-                      style:TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
-                    ),
                   ),
                   SizedBox(
                     width: 25,
                   ),
-                  ElevatedButton(
-                    onPressed: (){
+                  homepage_button_model(
+                    text: "註冊",
+                    on_tap:(){
                       Navigator.pushReplacement(
                         context, 
                         MaterialPageRoute(builder: (context) => signup()),
                       );
                     }, 
-                    style: ElevatedButton.styleFrom (
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 30,
-                        vertical: 10,
-                      ),
-                      backgroundColor: Colors.white,
-                    ),
-                    child: Text(
-                      "註冊",
-                      style:TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
-                    ),
                   ),
                 ],
               ),

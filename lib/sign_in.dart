@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'main_page.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'tools.dart';
 
 class sign_in extends StatefulWidget{
   @override
@@ -40,6 +41,10 @@ class sign_instate extends State<sign_in>{
     });
   }
 
+  final Map<String, TextEditingController> form_controllers={
+    "name":TextEditingController(),
+    "pass":TextEditingController(),
+  };
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,67 +52,24 @@ class sign_instate extends State<sign_in>{
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            SizedBox(
-              width: 300,
-              child: Text(
-                "名稱：",
-                style: TextStyle(
-                  fontSize: 20,
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            SizedBox(
-              width: 300,
-              height: 40,
-              child: TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.blue,
-                    ),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                ),
-              ),
+            sign_input(
+              controller: form_controllers["name"]!,
+              text: "使用者姓名",
             ),
 
             SizedBox(
               height: 10,
             ),
-            SizedBox(
-              width: 300,
-              child: Text(
-                "名稱：",
-                style: TextStyle(
-                  fontSize: 20,
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            SizedBox(
-              width: 300,
-              height: 40,
-              child: TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.blue,
-                    ),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                ),
-              ),
-            ),
 
+            sign_input(
+              controller: form_controllers["pass"]!,
+              text: "密碼",
+            ),
 
             SizedBox(
               height: 30,
             ),
+
             ElevatedButton(
               onPressed: (){
                 fetchpostData();

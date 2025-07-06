@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'sign_in.dart';
+import 'tools.dart';
 
 class signup extends StatefulWidget{
   @override
@@ -9,7 +10,14 @@ class signup extends StatefulWidget{
 }
 
 class signupstate extends State<signup>{
-  
+  final Map<String, TextEditingController> form_controllers ={
+    "name":TextEditingController(),
+    "pass":TextEditingController(),
+    "comfirm_pass":TextEditingController(),
+    "email":TextEditingController(),
+    "phone_num":TextEditingController(),
+    "birthday":TextEditingController(),
+  };
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,192 +25,60 @@ class signupstate extends State<signup>{
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            SizedBox(
-              width: 300,
-              child: Text(
-                "名稱：",
-                style: TextStyle(
-                  fontSize: 20,
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            SizedBox(
-              width: 300,
-              height: 40,
-              child: TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.blue,
-                    ),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                ),
-              ),
+            sign_input(
+              controller: form_controllers["name"]!,
+              text: "使用者姓名",
             ),
 
             SizedBox(
               height: 10,
             ),
-            SizedBox(
-              width: 300,
-              child: Text(
-                "名稱：",
-                style: TextStyle(
-                  fontSize: 20,
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            SizedBox(
-              width: 300,
-              height: 40,
-              child: TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.blue,
-                    ),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                ),
-              ),
-            ),
 
+            sign_input(
+              controller: form_controllers["pass"]!,
+              text: "密碼",
+            ),
 
             SizedBox(
               height: 10,
             ),
-            SizedBox(
-              width: 300,
-              child: Text(
-                "名稱：",
-                style: TextStyle(
-                  fontSize: 20,
-                ),
-              ),
+            
+            sign_input(
+              controller: form_controllers["comfirm_pass"]!,
+              text: "確認密碼",
             ),
-            SizedBox(
-              height: 5,
-            ),
-            SizedBox(
-              width: 300,
-              height: 40,
-              child: TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.blue,
-                    ),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                ),
-              ),
-            ),
-
 
             SizedBox(
               height: 10,
             ),
-            SizedBox(
-              width: 300,
-              child: Text(
-                "名稱：",
-                style: TextStyle(
-                  fontSize: 20,
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            SizedBox(
-              width: 300,
-              height: 40,
-              child: TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.blue,
-                    ),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                ),
-              ),
-            ),
 
-
+            sign_input(
+              controller: form_controllers["email"]!,
+              text: "電子郵件",
+            ),
 
             SizedBox(
               height: 10,
             ),
-            SizedBox(
-              width: 300,
-              child: Text(
-                "名稱：",
-                style: TextStyle(
-                  fontSize: 20,
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            SizedBox(
-              width: 300,
-              height: 40,
-              child: TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.blue,
-                    ),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                ),
-              ),
-            ),
 
-
+            sign_input(
+              controller: form_controllers["phone_num"]!,
+              text: "手機號碼",
+            ),
 
             SizedBox(
               height: 10,
             ),
-            SizedBox(
-              width: 300,
-              child: Text(
-                "名稱：",
-                style: TextStyle(
-                  fontSize: 20,
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            SizedBox(
-              width: 300,
-              height: 40,
-              child: TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.blue,
-                    ),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                ),
-              ),
+
+            sign_input(
+              controller: form_controllers["birthday"]!,
+              text: "生日",
             ),
 
             SizedBox(
               height: 30,
             ),
+
             ElevatedButton(
               onPressed: (){
                 Navigator.pushReplacement(
