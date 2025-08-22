@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'sign_in.dart';
 import 'signup.dart';
 import 'tools.dart';
+import 'main_page.dart';
 
 class homepage extends StatelessWidget{
   @override
@@ -37,7 +38,7 @@ class homepage extends StatelessWidget{
                     on_tap: (){
                       Navigator.pushReplacement(
                         context, 
-                        MaterialPageRoute(builder: (context) => sign_in()),
+                        MaterialPageRoute(builder: (context) => main_page()),
                       );
                     }, 
                   ),
