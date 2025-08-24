@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'sign_in.dart';
 import 'tools.dart';
+import 'api_service.dart';
 
 class signup extends StatefulWidget{
   @override
@@ -18,6 +19,23 @@ class signupstate extends State<signup>{
     "phone_num":TextEditingController(),
     "birthday":TextEditingController(),
   };
+
+  bool _loading = false;
+
+  Future<void> _sign_up() async
+  {
+    setState(() => _loading=true);
+    final res=await ApiService.register(
+      name: form_controllers['name']!.text.trim(),
+      password: form_controllers['pass']!.text,
+      phone: form_controllers['phone_num']!.text.trim(),
+      birthday: form_controllers['birthday']!.text.trim(),
+      email: form_controllers['email']!.text.trim(),
+    );
+    setState(() => _loading=false);
+    print(res);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,10 +99,7 @@ class signupstate extends State<signup>{
 
             ElevatedButton(
               onPressed: (){
-                Navigator.pushReplacement(
-                  context, 
-                  MaterialPageRoute(builder: (context) => sign_in()),
-                );
+                _sign_up();
               }, 
               style: ElevatedButton.styleFrom (
                 side:BorderSide(color:Colors.black),

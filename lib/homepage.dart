@@ -38,7 +38,7 @@ class homepage extends StatelessWidget{
                     on_tap: (){
                       Navigator.pushReplacement(
                         context, 
-                        MaterialPageRoute(builder: (context) => main_page()),
+                        MaterialPageRoute(builder: (context) => sign_in()),
                       );
                     }, 
                   ),

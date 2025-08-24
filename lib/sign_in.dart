@@ -3,6 +3,7 @@ import 'main_page.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'tools.dart';
+import 'api_service.dart';
 
 class sign_in extends StatefulWidget{
   @override
@@ -12,39 +13,25 @@ class sign_in extends StatefulWidget{
 }
 
 class sign_instate extends State<sign_in>{
-  String res= "";
-  Future<void> fetchpostData() async {
-    final url = Uri.parse('http://127.0.0.1:5001/login');
-    final response = await http.post(
-      url,
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer my_secret_key',
-
-      },
-      body: jsonEncode({
-        'username': 'flutter',
-        'password': '123456',
-      }),
-    );
-
-    setState(() {
-      if ( response.statusCode == 200) {
-        final data = jsonDecode(response.body);
-        print("收到資料：${data['message']}");
-        res = data['message'];
-      } else {
-        final err = jsonDecode(response.body);
-        print("錯誤：${err['message']}");
-        res = "錯誤：${err['message']}";
-      }
-    });
-  }
 
   final Map<String, TextEditingController> form_controllers={
-    "name":TextEditingController(),
+    "mail":TextEditingController(),
     "pass":TextEditingController(),
   };
+
+  bool _loading = false;
+
+  Future<void> _log_in() async
+  {
+    setState(() => _loading=true);
+    final res=await ApiService.login(
+      email: form_controllers['mail']!.text.trim(),
+      password: form_controllers['pass']!.text,
+    );
+    setState(() => _loading=false);
+    print(res);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,9 +40,9 @@ class sign_instate extends State<sign_in>{
           mainAxisSize: MainAxisSize.min,
           children: [
             sign_input(
-              controller: form_controllers["name"]!,
+              controller: form_controllers["mail"]!,
               text: "使用者姓名",
-            ),
+            ),//輸入
 
             SizedBox(
               height: 10,
@@ -72,7 +59,7 @@ class sign_instate extends State<sign_in>{
 
             ElevatedButton(
               onPressed: (){
-                fetchpostData();
+                _log_in();
               }, 
               style: ElevatedButton.styleFrom (
                 side:BorderSide(color:Colors.black),
